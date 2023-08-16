@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { CrudService } from '../crud.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CategoryCreateComponent } from '../category-create/category-create.component';
+import { CategoryEditComponent } from '../category-edit/category-edit.component';
 
 @Component({
   selector: 'app-category-list',
@@ -31,7 +32,18 @@ export class CategoryListComponent implements OnInit {
         dialogSubmitSubscription.unsubscribe();
       });
   }
-  openDialogEdit(id: string) {}
+  openDialogEdit(id: string) {
+    const dialogRef = this.dialog.open(CategoryEditComponent, {
+      data: id,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {});
+    const dialogSubmitSubscription =
+      dialogRef.componentInstance.submitClicked.subscribe(() => {
+        this.getCategorias();
+        dialogSubmitSubscription.unsubscribe();
+      });
+  }
   public applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
@@ -40,9 +52,7 @@ export class CategoryListComponent implements OnInit {
     try {
       this.crudService.getAll(this.resource).subscribe({
         next: (retorno: any) => {
-          this.categorias = retorno.data.map((valor: any) => {
-            return valor;
-          });
+          this.categorias = retorno.data;
           this.dataSource = new MatTableDataSource(this.categorias);
         },
         error: (err) => console.error(err),
