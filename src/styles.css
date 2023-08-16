@@ -1,1 +1,54 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  min-height: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.container {
+  padding: 20px;
+}
+.desativado {
+  color: #e35e6b;
+  font-weight: bolder;
+  border-radius: 2;
+}
+.ativado {
+  color: #66a3ff;
+  font-weight: bolder;
+  border-radius: 2;
+}
+.mat-table {
+  overflow-x: scroll;
+  overflow-y: scroll;
+}
+.table {
+  display: block !important;
+}
+.mat-cell {
+  word-wrap: normal;
+  display: table-cell;
+  padding: 8px 8px 8px 8px;
+  line-break: unset;
+  width: fit-content;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: middle;
+  text-align: left;
+}
+
+table {
+  width: 100%;
+  overflow: scroll;
+}
+
+.mat-header-cell {
+  text-align: left;
+  background-color: aliceblue;
+  color: cadetblue;
+  font-size: 15px;
+  font-weight: 570;
+  vertical-align: middle;
+}

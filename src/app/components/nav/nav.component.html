@@ -1,0 +1,15 @@
+<div>
+  <mat-toolbar color="primary" class="example-toolbar">
+    <button mat-button routerLink="/">
+      <i class="material-icons"> dashboard </i>Dashboard
+    </button>
+    <button mat-button routerLink="/category">
+      <i class="material-icons"> category </i>Categorias
+    </button>
+  </mat-toolbar>
+  <mat-sidenav-container>
+    <mat-sidenav-content class="sidenav-container">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

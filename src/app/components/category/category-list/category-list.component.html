@@ -1,0 +1,44 @@
+<div class="container">
+  <mat-card>
+    <button mat-fab color="primary" (click)="openDialogCreate()">
+      <mat-icon>plus_one</mat-icon></button
+    ><br /><br />
+    <mat-form-field>
+      <input
+        #pesquisa
+        matInput
+        (keyup)="applyFilter(pesquisa.value)"
+        placeholder="Pesquisar Categoria"
+      />
+    </mat-form-field>
+    <div class="">
+      <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="status">
+          <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+          <mat-cell
+            *matCellDef="let row"
+            [ngClass]="row.status ? 'ativado' : 'desativado'"
+            >{{ row.status == true ? "Ativo" : "Inativo" }}</mat-cell
+          >
+        </ng-container>
+
+        <ng-container matColumnDef="nome">
+          <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
+          <mat-cell *matCellDef="let row">{{ row.nome }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="editar">
+          <mat-header-cell *matHeaderCellDef>Editar</mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <a mat-mini-fab (click)="openDialogEdit(row.id)"
+              ><i class="material-icons icon-blue">edit</i></a
+            >
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+      </table>
+    </div>
+  </mat-card>
+</div>

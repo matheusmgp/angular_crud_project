@@ -1,0 +1,30 @@
+<div>
+  <mat-card>
+    <mat-card-title mat-dialog-title>Cadastrar Categoria</mat-card-title>
+    <form [formGroup]="form">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Nome</mat-label>
+          <input matInput formControlName="nome" />
+          <mat-error *ngIf="hasError('nome', 'required')"
+            >Nome é requerido</mat-error
+          >
+          <mat-error *ngIf="hasError('nome', 'maxlength')"
+            >Voce colocou mais de 30 caracteres</mat-error
+          >
+          <mat-error *ngIf="hasError('nome', 'minlength')"
+            >Descrição precisa ter no mínimo 10 caracteres</mat-error
+          >
+        </mat-form-field>
+      </div>
+    </form>
+    <button
+      mat-raised-button
+      (click)="criar()"
+      color="primary"
+      [disabled]="!form.valid"
+    >
+      Salvar
+    </button>
+  </mat-card>
+</div>
